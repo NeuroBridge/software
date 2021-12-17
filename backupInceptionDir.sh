@@ -35,6 +35,7 @@ date=`date +%d%m%y`
 
 # make the backup directory
 thisBackupDir=${BASEDIR}/"inception-backup-"${date}
+thisBackupTarFile=${BASEDIR}/"inception-backup-"${date}.tar.gz
 echo $thisBackupDir
 mkdir -p $thisBackupDir
 
@@ -45,3 +46,6 @@ mkdir -p $thisBackupDir
 /usr/bin/cp ${INCEPTIONDIR}"/settings.properties" ${thisBackupDir}
 /usr/bin/cp -r ${INCEPTIONDIR}"/log" ${thisBackupDir}
 /usr/bin/cp -r ${INCEPTIONDIR}"/repository" ${thisBackupDir}
+
+/usr/bin/tar -czf ${thisBackupTarFile} ${thisBackupDir}
+/usr/bin/rm -rf ${thisBackupDir}
